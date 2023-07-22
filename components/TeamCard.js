@@ -1,16 +1,30 @@
+/* eslint-disable array-callback-return */
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/forbid-prop-types */
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
+// import { getTeamMembers } from '../api/teamData';
 
 function TeamCard({ teamObj }) {
+  // const [teamMembers, SetTeamMembers] = useState([]);
+
+  // useEffect(() => {
+  //   const memberArry = [];
+  //   teamObj.members?.map((member) => {
+  //     getTeamMembers(member).then((memberInfo) => {
+  //       memberArry.push(memberInfo);
+  //     });
+  //   });
+  //   SetTeamMembers(memberArry);
+  //   console.warn(teamMembers);
+  // }, []);
+
   return (
-    <Card>
+    <Card style={{ width: '40%' }}>
       <Card.Body>
-        <h2>{teamObj.name} {teamObj.game}</h2>
-        {teamObj.members?.map((member) => (
-          <h3>{member}</h3>
-        ))}
+        <h1>{teamObj.name}</h1>
+        <h2>{teamObj.game}</h2>
       </Card.Body>
     </Card>
   );
