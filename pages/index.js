@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
 import TeamCard from '../components/TeamCard';
 import getTeams from '../api/teamData';
@@ -10,15 +11,15 @@ function Home() {
 
   const getAllTheTeams = () => {
     getTeams(user.uid).then(SetTeams);
-    console.warn(SetTeams);
   };
 
   useEffect(() => {
     getAllTheTeams();
-  });
+  }, []);
 
   return (
     <div>
+      <h1>wow</h1>
       {teams.map((team) => (
         <TeamCard key={team.firebaseKey} teamObj={team} />
       ))}
