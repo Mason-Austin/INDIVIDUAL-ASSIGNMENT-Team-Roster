@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
 import TeamCard from '../components/TeamCard';
-import getTeams from '../api/teamData';
+import { getTeams } from '../api/teamData';
 
 function Home() {
   const [teams, SetTeams] = useState([]);
@@ -19,7 +19,6 @@ function Home() {
 
   return (
     <div>
-      <h1>wow</h1>
       {teams.map((team) => (
         <TeamCard key={team.firebaseKey} teamObj={team} />
       ))}
