@@ -1,10 +1,10 @@
 /* eslint-disable array-callback-return */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/forbid-prop-types */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
-import { getTeamMembers } from '../api/teamData';
+// import { getTeamMembers } from '../api/teamData';
 
 function TeamCard({ teamObj }) {
   // const [teamMembers, SetTeamMembers] = useState([]);
