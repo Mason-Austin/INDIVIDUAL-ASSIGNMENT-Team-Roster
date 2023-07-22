@@ -1,19 +1,28 @@
-// import { useAuth } from '../utils/context/authContext';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState } from 'react';
+import { useAuth } from '../utils/context/authContext';
+import TeamCard from '../components/TeamCard';
+import getTeams from '../api/teamData';
 
 function Home() {
-  // const { user } = useAuth();
+  const [teams, SetTeams] = useState([]);
+
+  const { user } = useAuth();
+
+  const getAllTheTeams = () => {
+    getTeams(user.uid).then(SetTeams);
+  };
+
+  useEffect(() => {
+    getAllTheTeams();
+  }, []);
 
   return (
-    <div
-      className="text-center d-flex flex-column justify-content-center align-content-center"
-      style={{
-        height: '90vh',
-        padding: '30px',
-        maxWidth: '400px',
-        margin: '0 auto',
-      }}
-    >
-      <h1>Teams </h1>
+    <div>
+      <h1>wow</h1>
+      {teams.map((team) => (
+        <TeamCard key={team.firebaseKey} teamObj={team} />
+      ))}
     </div>
   );
 }

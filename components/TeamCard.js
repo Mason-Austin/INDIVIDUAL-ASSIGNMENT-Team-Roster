@@ -1,13 +1,14 @@
 /* eslint-disable react/forbid-prop-types */
+import React from 'react';
 import Card from 'react-bootstrap/Card';
-import { propTypes } from 'react-bootstrap/esm/Image';
+import PropTypes from 'prop-types';
 
 function TeamCard({ teamObj }) {
   return (
     <Card>
       <Card.Body>
         <h2>{teamObj.name} {teamObj.game}</h2>
-        {teamObj.members.map((member) => (
+        {teamObj.members?.map((member) => (
           <h3>{member}</h3>
         ))}
       </Card.Body>
@@ -18,9 +19,9 @@ function TeamCard({ teamObj }) {
 export default TeamCard;
 
 TeamCard.propTypes = {
-  teamObj: propTypes.shape({
-    game: propTypes.sring,
-    name: propTypes.sring,
-    members: propTypes.array,
+  teamObj: PropTypes.shape({
+    game: PropTypes.string,
+    name: PropTypes.string,
+    members: PropTypes.array,
   }).isRequired,
 };
