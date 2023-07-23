@@ -14,7 +14,7 @@ const getMembers = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-const updateMembers = (payload) => new Promise((resolve, reject) => {
+const updateMember = (payload) => new Promise((resolve, reject) => {
   fetch(`${endpoint}/members/${payload.firebaseKey}.json`, {
     method: 'PATCH',
     headers: {
@@ -39,8 +39,21 @@ const createMember = (payload) => new Promise((resolve, reject) => {
     .then((data) => resolve(data))
     .catch(reject);
 });
+
+const deleteMember = (firebaseKey) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/members/${firebaseKey}.json`, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+    .then((response) => response.json())
+    .then((data) => resolve((data)))
+    .catch(reject);
+});
 export {
   getMembers,
-  updateMembers,
+  updateMember,
   createMember,
+  deleteMember,
 };
