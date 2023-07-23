@@ -1,10 +1,11 @@
 import React from 'react';
+import TeamForm from '../../components/Forms/TeamForm';
 
 function addTeam() {
   return (
-    <div>
-      <h1>Make a new team</h1>
-    </div>
+    <>
+      <TeamForm />
+    </>
   );
 }
 
