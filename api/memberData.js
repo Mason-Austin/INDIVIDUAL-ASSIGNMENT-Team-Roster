@@ -14,4 +14,20 @@ const getMembers = (uid) => new Promise((resolve, reject) => {
     .catch(reject);
 });
 
-export default getMembers;
+const updateMembers = (payload) => new Promise((resolve, reject) => {
+  fetch(`${endpoint}/members/${payload.firebaseKey}.json`, {
+    method: 'PATCH',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+  })
+    .then((response) => response.json())
+    .then((data) => resolve(data))
+    .catch(reject);
+});
+
+export {
+  getMembers,
+  updateMembers,
+};
