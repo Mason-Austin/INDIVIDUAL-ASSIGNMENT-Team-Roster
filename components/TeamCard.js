@@ -4,27 +4,23 @@
 import React from 'react';
 import Card from 'react-bootstrap/Card';
 import PropTypes from 'prop-types';
-// import { getTeamMembers } from '../api/teamData';
+import { Button } from 'react-bootstrap';
+import { deleteTeam } from '../api/teamData';
 
-function TeamCard({ teamObj }) {
-  // const [teamMembers, SetTeamMembers] = useState([]);
-
-  // useEffect(() => {
-  //   const memberArry = [];
-  //   teamObj.members?.map((member) => {
-  //     getTeamMembers(member).then((memberInfo) => {
-  //       memberArry.push(memberInfo);
-  //     });
-  //   });
-  //   SetTeamMembers(memberArry);
-  //   console.warn(teamMembers);
-  // }, []);
-
+function TeamCard({ teamObj, onUpdate }) {
+  const deleteThisTeam = () => {
+    if (window.confirm(`Delete ${teamObj.name} team?`)) {
+      deleteTeam(teamObj.firebaseKey).then(() => onUpdate());
+    }
+  };
   return (
     <Card style={{ width: '40%' }}>
       <Card.Body>
         <h1>{teamObj.name}</h1>
         <h2>{teamObj.game}</h2>
+        <Button variant="danger" onClick={deleteThisTeam} className="m-2">
+          DELETE
+        </Button>
       </Card.Body>
     </Card>
   );
@@ -37,5 +33,7 @@ TeamCard.propTypes = {
     game: PropTypes.string,
     name: PropTypes.string,
     members: PropTypes.array,
+    firebaseKey: PropTypes.string,
   }).isRequired,
-};
+  onUpdate: PropTypes.func,
+}.isRequired;
