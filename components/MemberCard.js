@@ -11,12 +11,12 @@ function MemberCard({ memberObj, onUpdate }) {
   };
   return (
     <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="memberObj.image" />
+      <Card.Img variant="top" src={memberObj.image} />
       <Card.Body>
         <Card.Title>
-          {memberObj.team_name}
-          {memberObj.name}
-          {memberObj.role}
+          <h1>{memberObj.team_name}</h1>
+          <h2>{memberObj.name}</h2>
+          <h3>{memberObj.role}</h3>
         </Card.Title>
         <Button variant="danger" onClick={deleteThisMember}>Delete</Button>
       </Card.Body>
