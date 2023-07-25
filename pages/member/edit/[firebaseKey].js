@@ -12,7 +12,5 @@ export default function EditMember() {
     getSingleMember(firebaseKey).then(SetEditMember);
   }, [firebaseKey]);
 
-  console.warn('editmember', editMember);
-
   return <MemberForm obj={editMember} />;
 }
