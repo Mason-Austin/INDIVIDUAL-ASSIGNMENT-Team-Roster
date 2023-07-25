@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
+import Link from 'next/link';
 import { deleteMember } from '../api/memberData';
 
 function MemberCard({ memberObj, onUpdate }) {
@@ -18,6 +19,9 @@ function MemberCard({ memberObj, onUpdate }) {
           <h2>{memberObj.name}</h2>
           <h3>{memberObj.role}</h3>
         </Card.Title>
+        <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
+          <Button variant="info">EDIT</Button>
+        </Link>
         <Button variant="danger" onClick={deleteThisMember}>Delete</Button>
       </Card.Body>
     </Card>
