@@ -19,6 +19,9 @@ function TeamCard({ teamObj, onUpdate }) {
       <Card.Body>
         <h1>{teamObj.name}</h1>
         <h2>{teamObj.game}</h2>
+        <Link href={`/team/${teamObj.firebaseKey}`} passHref>
+          <Button variant="primary" className="m-2">VIEW</Button>
+        </Link>
         <Link href={`/team/edit/${teamObj.firebaseKey}`} passHref>
           <Button variant="info">EDIT</Button>
         </Link>
