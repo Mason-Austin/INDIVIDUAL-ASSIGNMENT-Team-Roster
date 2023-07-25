@@ -92,10 +92,10 @@ function MemberForm({ obj }) {
       <FloatingLabel controlId="floatingSelect" label="Team">
         <Form.Select
           aria-label="Team"
-          name="team_game"
+          name="team_id"
           onChange={handleChange}
           className="mb-3"
-          value={obj.team_game} // FIXME: modify code to remove error
+          value={obj.team_id} // FIXME: modify code to remove error
           required
         >
           <option value="">Select an Team</option>
@@ -103,7 +103,7 @@ function MemberForm({ obj }) {
             teams.map((team) => (
               <option
                 key={team.firebaseKey}
-                value={team.game}
+                value={team.firebaseKey}
               >
                 {team.game}
               </option>
@@ -125,8 +125,7 @@ MemberForm.propTypes = {
     image: PropTypes.string,
     name: PropTypes.string,
     role: PropTypes.string,
-    team_game: PropTypes.string,
-    team_name: PropTypes.string,
+    team_id: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
