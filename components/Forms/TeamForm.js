@@ -27,7 +27,6 @@ function TeamForm({ obj }) {
       ...prevState,
       [name]: value,
     }));
-    console.warn(user);
   };
 
   const handleSubmit = (e) => {

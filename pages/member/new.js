@@ -1,9 +1,10 @@
 import React from 'react';
+import MemberForm from '../../components/Forms/MemberForm';
 
 function addMember() {
   return (
     <div>
-      <h1>add Member</h1>
+      <MemberForm />
     </div>
   );
 }
