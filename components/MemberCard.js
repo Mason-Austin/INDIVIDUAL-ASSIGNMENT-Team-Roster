@@ -15,7 +15,7 @@ function MemberCard({ memberObj, onUpdate }) {
       <Card.Img variant="top" src={memberObj.image} />
       <Card.Body>
         <Card.Title>
-          <h1>{memberObj.team_name}</h1>
+          <h1>{memberObj.team_game}</h1>
           <h2>{memberObj.name}</h2>
           <h3>{memberObj.role}</h3>
         </Card.Title>

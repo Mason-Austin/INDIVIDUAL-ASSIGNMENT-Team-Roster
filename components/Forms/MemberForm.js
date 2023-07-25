@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { getTeams, updateTeam } from '../../api/teamData';
+import { getTeams } from '../../api/teamData';
 import { useAuth } from '../../utils/context/authContext';
 import { createMember, updateMember } from '../../api/memberData';
 
@@ -36,12 +36,12 @@ function MemberForm({ obj }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (obj.firebaseKey) {
-      updateMember(formInput).then(() => router.push(`/member/${obj.firebaseKey}`));
+      updateMember(formInput).then(() => router.push('/viewMembers'));
     } else {
       const payload = { ...formInput, uid: user.uid };
       createMember(payload).then(({ name }) => {
         const patchPayLoad = { firebaseKey: name };
-        updateTeam(patchPayLoad).then(() => {
+        updateMember(patchPayLoad).then(() => {
           router.push('/viewMembers');
         });
       });
@@ -92,10 +92,10 @@ function MemberForm({ obj }) {
       <FloatingLabel controlId="floatingSelect" label="Team">
         <Form.Select
           aria-label="Team"
-          name="team_id"
+          name="team_game"
           onChange={handleChange}
           className="mb-3"
-          value={obj.team_id} // FIXME: modify code to remove error
+          value={obj.team_game} // FIXME: modify code to remove error
           required
         >
           <option value="">Select an Team</option>
@@ -103,7 +103,7 @@ function MemberForm({ obj }) {
             teams.map((team) => (
               <option
                 key={team.firebaseKey}
-                value={team.firebaseKey}
+                value={team.game}
               >
                 {team.game}
               </option>
@@ -125,7 +125,8 @@ MemberForm.propTypes = {
     image: PropTypes.string,
     name: PropTypes.string,
     role: PropTypes.string,
-    team_id: PropTypes.string,
+    team_game: PropTypes.string,
+    team_name: PropTypes.string,
     firebaseKey: PropTypes.string,
   }),
 };
