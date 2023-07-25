@@ -47,7 +47,7 @@ function MemberForm({ obj }) {
       });
     }
   };
-
+  console.warn(obj);
   return (
     <Form onSubmit={handleSubmit}>
       <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Member</h2>
