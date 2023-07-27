@@ -3,7 +3,7 @@
 import { useRouter } from 'next/router';
 import React, { useEffect, useState } from 'react';
 import MemberCard from '../../components/MemberCard';
-import viewTeamDetails from '../../api/mergedData';
+import { viewTeamDetails } from '../../api/mergedData';
 
 export default function ViewTeam() {
   const [teamDetails, SetTeamDetails] = useState({});

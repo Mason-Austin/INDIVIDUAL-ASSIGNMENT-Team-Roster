@@ -20,3 +20,8 @@ a {
 body {
   background-color: #88effd;
 }
+
+.flex-rw{
+  display: flex;
+  flex-flow: row wrap;
+}

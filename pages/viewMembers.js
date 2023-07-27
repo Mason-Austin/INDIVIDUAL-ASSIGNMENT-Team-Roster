@@ -18,7 +18,7 @@ function ViewMember() {
   }, []);
 
   return (
-    <div>
+    <div className="flex-rw">
       {members.map((member) => (
         <MemberCard key={member.firebaseKey} memberObj={member} onUpdate={getAllMembers} />
       ))}
