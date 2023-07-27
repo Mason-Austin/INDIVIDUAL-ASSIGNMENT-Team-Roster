@@ -18,7 +18,7 @@ function Home() {
   }, []);
 
   return (
-    <div>
+    <div className="flex-rw">
       {teams.map((team) => (
         <TeamCard key={team.firebaseKey} teamObj={team} onUpdate={getAllTheTeams} />
       ))}
