@@ -15,7 +15,7 @@ function TeamCard({ teamObj, onUpdate }) {
     }
   };
   return (
-    <Card style={{ width: '40%' }}>
+    <Card className="team-card">
       <Card.Body>
         <h1>{teamObj.name}</h1>
         <h2>{teamObj.game}</h2>
