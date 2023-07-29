@@ -55,6 +55,7 @@ function TeamForm({ obj }) {
           name="name"
           value={formInput.name}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
@@ -66,6 +67,7 @@ function TeamForm({ obj }) {
           name="game"
           value={formInput.game}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
