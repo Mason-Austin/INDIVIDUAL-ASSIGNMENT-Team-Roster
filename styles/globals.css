@@ -30,3 +30,16 @@ body {
   width: 40%;
   margin: 2% 5%;
 }
+
+.member-card{
+  margin: 2% 1%;
+}
+
+.search{
+  width: 25%;
+  margin: 2% 5% 2% auto;
+}
+
+.member-btns{
+  margin-bottom: 0%;
+}

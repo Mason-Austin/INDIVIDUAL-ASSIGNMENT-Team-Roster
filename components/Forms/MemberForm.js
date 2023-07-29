@@ -14,6 +14,7 @@ const initialState = {
 };
 
 function MemberForm({ obj }) {
+  document.title = 'New Members';
   const [formInput, SetFormInput] = useState(initialState);
   const [teams, SetTeams] = useState([]);
   const router = useRouter();
@@ -84,7 +85,6 @@ function MemberForm({ obj }) {
           name="role"
           value={formInput.role}
           onChange={handleChange}
-          required
         />
       </FloatingLabel>
 

@@ -6,6 +6,7 @@ import { getTeams } from '../api/teamData';
 import SearchBar from '../utils/SearchBar';
 
 function Home() {
+  document.title = 'Teams';
   const [teams, SetTeams] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 

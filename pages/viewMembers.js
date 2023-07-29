@@ -6,6 +6,7 @@ import MemberCard from '../components/MemberCard';
 import SearchBar from '../utils/SearchBar';
 
 function ViewMember() {
+  document.title = 'Members';
   const [members, SetMembers] = useState([]);
   const [searchResults, setSearchResults] = useState([]);
 
