@@ -24,6 +24,7 @@ body {
 .flex-rw{
   display: flex;
   flex-flow: row wrap;
+  margin-top: 4%;
 }
 
 .team-card{
@@ -38,10 +39,17 @@ body {
 }
 
 .search{
-  width: 25%;
-  margin: 2% 5% 2% auto;
+  width: 20%;
+  position: fixed;
+  right: 1%;
+  top: 1%;
   background-color: #87bba2;
   border: black;
+  z-index: 9999;
+}
+
+form {
+  margin-top: 10%;
 }
 
 .form-bc{
@@ -49,6 +57,9 @@ body {
   border: black;
 }
 
-.member-btns{
-  margin-bottom: 0%;
+.top-screen{
+  position: fixed;
+  width: 100%;
+  z-index: 9999;
+  top: 0;
 }
