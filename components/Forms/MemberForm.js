@@ -13,6 +13,7 @@ const initialState = {
 };
 
 function MemberForm({ obj }) {
+  document.title = 'New Member';
   const [formInput, SetFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();

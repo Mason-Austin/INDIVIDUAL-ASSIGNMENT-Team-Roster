@@ -5,6 +5,7 @@ import { getMembers } from '../api/memberData';
 import MemberCard from '../components/MemberCard';
 
 function ViewMember() {
+  document.title = 'Team';
   const [members, SetMembers] = useState([]);
 
   const { user } = useAuth();
