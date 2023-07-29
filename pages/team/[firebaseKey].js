@@ -24,11 +24,11 @@ export default function ViewTeam() {
         <h1>{teamDetails.name}</h1>
         <h2>{teamDetails.game}</h2>
       </>
-      <>
+      <div className="flex-rw">
         {teamDetails.members?.map((member) => (
           <MemberCard key={member.firebaseKey} teamDetails={true} memberObj={member} onUpdate={getTeamDetails} />
         ))}
-      </>
+      </div>
     </>
   );
 }

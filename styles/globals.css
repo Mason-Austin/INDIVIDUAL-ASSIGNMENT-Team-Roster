@@ -18,7 +18,7 @@ a {
 }
 
 body {
-  background-color: #88effd;
+  background-color: #364958;
 }
 
 .flex-rw{
@@ -29,4 +29,26 @@ body {
 .team-card{
   width: 40%;
   margin: 2% 5%;
+  background-color: #87bba2;
+}
+
+.member-card{
+  margin: 2% 1%;
+  background-color: #87bba2;
+}
+
+.search{
+  width: 25%;
+  margin: 2% 5% 2% auto;
+  background-color: #87bba2;
+  border: black;
+}
+
+.form-bc{
+  background-color: #87bba2;
+  border: black;
+}
+
+.member-btns{
+  margin-bottom: 0%;
 }

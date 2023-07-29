@@ -14,6 +14,7 @@ const initialState = {
 };
 
 function MemberForm({ obj }) {
+  document.title = 'New Members';
   const [formInput, SetFormInput] = useState(initialState);
   const [teams, SetTeams] = useState([]);
   const router = useRouter();
@@ -60,6 +61,7 @@ function MemberForm({ obj }) {
           name="name"
           value={formInput.name}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
@@ -72,6 +74,7 @@ function MemberForm({ obj }) {
           name="image"
           value={formInput.image}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
@@ -84,33 +87,31 @@ function MemberForm({ obj }) {
           name="role"
           value={formInput.role}
           onChange={handleChange}
-          required
+          className="form-bc"
         />
       </FloatingLabel>
 
       {/* Team SELECT  */}
-      <FloatingLabel controlId="floatingSelect" label="Team">
-        <Form.Select
-          aria-label="Team"
-          name="team_id"
-          onChange={handleChange}
-          className="mb-3"
-          value={obj.team_id} // FIXME: modify code to remove error
-          required
-        >
-          <option value="">Select an Team</option>
-          {
-            teams.map((team) => (
-              <option
-                key={team.firebaseKey}
-                value={team.firebaseKey}
-              >
-                {team.game}
-              </option>
-            ))
-          }
-        </Form.Select>
-      </FloatingLabel>
+      <Form.Select
+        aria-label="Team"
+        name="team_id"
+        onChange={handleChange}
+        className="mb-3 form-bc"
+        value={obj.team_id} // FIXME: modify code to remove error
+        required
+      >
+        <option value="">Select a Team</option>
+        {
+          teams.map((team) => (
+            <option
+              key={team.firebaseKey}
+              value={team.firebaseKey}
+            >
+              {team.game}
+            </option>
+          ))
+        }
+      </Form.Select>
 
       {/* SUBMIT BUTTON  */}
       <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Player</Button>

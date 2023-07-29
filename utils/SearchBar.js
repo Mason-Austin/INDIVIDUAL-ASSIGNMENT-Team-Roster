@@ -20,11 +20,12 @@ export default function SearchBar({ contents, setSearchResults }) {
   return (
     <>
       <Form onSubmit={handleSubmit}>
-        <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+        <Form.Group>
           <Form.Control
             type="text"
             onKeyUp={handleSearchChange}
             placeholder="Search here"
+            className="search"
           />
         </Form.Group>
       </Form>

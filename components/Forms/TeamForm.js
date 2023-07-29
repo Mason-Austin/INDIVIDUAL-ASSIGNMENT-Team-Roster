@@ -13,6 +13,7 @@ const initialState = {
 };
 
 function TeamForm({ obj }) {
+  document.title = 'New Team';
   const [formInput, SetFormInput] = useState(initialState);
   const router = useRouter();
   const { user } = useAuth();
@@ -46,6 +47,7 @@ function TeamForm({ obj }) {
 
   return (
     <Form onSubmit={handleSubmit}>
+      <h2 className="text-white mt-5">{obj.firebaseKey ? 'Update' : 'Create'} Team</h2>
       <FloatingLabel controlId="floatingInput2" label="Team Name" className="mb-3">
         <Form.Control
           type="text"
@@ -53,6 +55,7 @@ function TeamForm({ obj }) {
           name="name"
           value={formInput.name}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
@@ -64,13 +67,12 @@ function TeamForm({ obj }) {
           name="game"
           value={formInput.game}
           onChange={handleChange}
+          className="form-bc"
           required
         />
       </FloatingLabel>
 
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <Button type="submit">{obj.firebaseKey ? 'Update' : 'Create'} Team</Button>
     </Form>
   );
 }

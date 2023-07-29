@@ -27,7 +27,7 @@ function MemberCard({ memberObj, teamDetails, onUpdate }) {
 
   if (teamDetails) {
     return (
-      <Card style={{ width: '18rem' }}>
+      <Card className="member-card" style={{ width: '18rem' }}>
         <Card.Img variant="top" src={memberObj.image} />
         <Card.Body>
           <Card.Title>
@@ -35,23 +35,28 @@ function MemberCard({ memberObj, teamDetails, onUpdate }) {
             <h2>{memberObj.name}</h2>
             <h3>{memberObj.role}</h3>
           </Card.Title>
+          <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
+            <Button variant="info">EDIT</Button>
+          </Link>
         </Card.Body>
       </Card>
     );
   }
   return (
-    <Card style={{ width: '18rem' }}>
+    <Card className="member-card" style={{ width: '18rem' }}>
       <Card.Img variant="top" src={memberObj.image} />
-      <Card.Body>
+      <Card.Body className="d-flex flex-column">
         <Card.Title>
           <h1>{teamGame}</h1>
           <h2>{memberObj.name}</h2>
           <h3>{memberObj.role}</h3>
         </Card.Title>
-        <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
-          <Button variant="info">EDIT</Button>
-        </Link>
-        <Button variant="danger" onClick={deleteThisMember}>Delete</Button>
+        <div className="mt-auto">
+          <Link href={`/member/edit/${memberObj.firebaseKey}`} passHref>
+            <Button variant="info">EDIT</Button>
+          </Link>
+          <Button variant="danger" onClick={deleteThisMember}>Delete</Button>
+        </div>
       </Card.Body>
     </Card>
   );
