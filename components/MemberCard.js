@@ -1,50 +1,22 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card } from 'react-bootstrap';
 import Link from 'next/link';
 import { deleteMember } from '../api/memberData';
-import { getSingleTeam } from '../api/teamData';
 
-function MemberCard({ memberObj, teamDetails, onUpdate }) {
-  const [teamGame, SetTeamGame] = useState();
-
-  const getMembersTeam = () => {
-    getSingleTeam(memberObj.team_id).then((obj) => (SetTeamGame(obj.game)));
-  };
-
-  useEffect(() => {
-    if (!teamDetails) {
-      getMembersTeam();
-    }
-  }, []);
-
+function MemberCard({ memberObj, onUpdate }) {
   const deleteThisMember = () => {
     if (window.confirm(`Delete ${memberObj.name}`)) {
       deleteMember(memberObj.firebaseKey).then(() => onUpdate());
     }
   };
 
-  if (teamDetails) {
-    return (
-      <Card style={{ width: '18rem' }}>
-        <Card.Img variant="top" src={memberObj.image} />
-        <Card.Body>
-          <Card.Title>
-            <h1>{teamGame}</h1>
-            <h2>{memberObj.name}</h2>
-            <h3>{memberObj.role}</h3>
-          </Card.Title>
-        </Card.Body>
-      </Card>
-    );
-  }
   return (
     <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src={memberObj.image} />
       <Card.Body>
         <Card.Title>
-          <h1>{teamGame}</h1>
           <h2>{memberObj.name}</h2>
           <h3>{memberObj.role}</h3>
         </Card.Title>

@@ -1,37 +1,33 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../utils/context/authContext';
-import TeamCard from '../components/TeamCard';
-import { getTeams } from '../api/teamData';
-import SearchBar from '../utils/SearchBar';
+import { getMembers } from '../api/memberData';
+import MemberCard from '../components/MemberCard';
 
-function Home() {
-  const [teams, SetTeams] = useState([]);
-  const [searchResults, setSearchResults] = useState([]);
+function ViewMember() {
+  const [members, SetMembers] = useState([]);
 
   const { user } = useAuth();
 
-  const getAllTheTeams = () => {
-    getTeams(user.uid).then((allTeams) => {
-      SetTeams(allTeams);
-      setSearchResults(allTeams);
+  const getAllMembers = () => {
+    getMembers(user.uid).then((allMembers) => {
+      SetMembers(allMembers);
     });
   };
 
   useEffect(() => {
-    getAllTheTeams();
+    getAllMembers();
   }, []);
 
   return (
     <>
-      <SearchBar contents={teams} setSearchResults={setSearchResults} />
-      <div className="flex-rw center">
-        {searchResults?.map((team) => (
-          <TeamCard key={team.firebaseKey} teamObj={team} onUpdate={getAllTheTeams} />
+      <div className="flex-rw">
+        {members?.map((member) => (
+          <MemberCard key={member.firebaseKey} memberObj={member} onUpdate={getAllMembers} />
         ))}
       </div>
     </>
   );
 }
 
-export default Home;
+export default ViewMember;

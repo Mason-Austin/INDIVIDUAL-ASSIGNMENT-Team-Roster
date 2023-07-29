@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Form, FloatingLabel, Button } from 'react-bootstrap';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
-import { getTeams } from '../../api/teamData';
 import { useAuth } from '../../utils/context/authContext';
 import { createMember, updateMember } from '../../api/memberData';
 
@@ -15,13 +14,10 @@ const initialState = {
 
 function MemberForm({ obj }) {
   const [formInput, SetFormInput] = useState(initialState);
-  const [teams, SetTeams] = useState([]);
   const router = useRouter();
   const { user } = useAuth();
 
   useEffect(() => {
-    getTeams(user.uid).then(SetTeams);
-
     if (obj.firebaseKey) SetFormInput(obj);
   }, [obj, user]);
 
@@ -42,7 +38,7 @@ function MemberForm({ obj }) {
       createMember(payload).then(({ name }) => {
         const patchPayLoad = { firebaseKey: name };
         updateMember(patchPayLoad).then(() => {
-          router.push('/viewMembers');
+          router.push('/');
         });
       });
     }
@@ -86,30 +82,6 @@ function MemberForm({ obj }) {
           onChange={handleChange}
           required
         />
-      </FloatingLabel>
-
-      {/* Team SELECT  */}
-      <FloatingLabel controlId="floatingSelect" label="Team">
-        <Form.Select
-          aria-label="Team"
-          name="team_id"
-          onChange={handleChange}
-          className="mb-3"
-          value={obj.team_id} // FIXME: modify code to remove error
-          required
-        >
-          <option value="">Select an Team</option>
-          {
-            teams.map((team) => (
-              <option
-                key={team.firebaseKey}
-                value={team.firebaseKey}
-              >
-                {team.game}
-              </option>
-            ))
-          }
-        </Form.Select>
       </FloatingLabel>
 
       {/* SUBMIT BUTTON  */}
